@@ -19,6 +19,13 @@ shinyUI(pageWithSidebar(
     h4('Cashflow Per Week ($)'),
     textOutput("cashflowPerWeek"),
     h4('Cashflow Per Year ($)'),
-    textOutput("cashflowPerYear")
+    textOutput("cashflowPerYear"),
+    br(),
+    h4('Instructions'),
+    helpText("This application is for property investors to calculate the rental yield of a property and estimate the cashflow of owning the property. Your real estate agent and mortgage broker will be able to help you with the numbers."),
+    code("Rental Yield"),
+    helpText("Enter the property's price and expected weekly rental income to calculate the rental yield."),
+    code("Cashflow"),
+    helpText("Enter the property's holding costs to estimate the cashflow of owning the property.")
   )
 ))
