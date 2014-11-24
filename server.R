@@ -1,26 +1,21 @@
-library(shiny)
-shinyServer(
-  function(input, output){
-    output$rentalYield <- renderText({ calculateRentalYield(input$weeklyRent, input$price) })
-    output$cashflowPerYear <- renderText({calculateYearlyCashflow(input$weeklyRent, input$strataPerQuarter, input$councilPerQuarter, input$waterPerQuarter, input$managementFees, input$weeklyRepayments)})
-    output$cashflowPerWeek <- renderText({calculateWeeklyCashflow(input$weeklyRent, input$strataPerQuarter, input$councilPerQuarter, input$waterPerQuarter, input$managementFees, input$weeklyRepayments)})
-  }
-)
+# server.R
+# library(shiny)
+library(ggplot2)
 
-calculateRentalYield <- function (weeklyRent, propertyPrice) 
-{
-  result <- weeklyRent * 52 / propertyPrice * 100
-  return(round(result, digits = 2))
-}
+ds<-mtcars
 
-calculateYearlyCashflow <- function(weeklyRent, strata, council, water, managementFees, weeklyRepayments)
-{
-  result <- weeklyRent * 52 - (strata + council + water) * 4 - managementFees * 52 - weeklyRepayments * 52
-  return(round(result, digits = 2))
-}
-
-calculateWeeklyCashflow <- function(weeklyRent, strata, council, water, managementFees, weeklyRepayments)
-{
-  result <- (weeklyRent * 52 - (strata + council + water) * 4 - managementFees * 52 - weeklyRepayments * 52) / 52
-  return(round(result, digits = 2))
-}
+shinyServer(function(input, output) {
+    dataset <- reactive({
+        ds[input$carModel,]
+    })
+    output$plot <- renderPlot({
+        p <- ggplot(dataset(), aes_string(x=input$x, y=input$y)) + geom_point()
+        if (input$z != 'None') p <- p + aes_string(color=input$z)
+        facets <- paste(input$facet_row, '~', input$facet_col)
+        if (facets != '. ~ .') p <- p + facet_grid(facets)
+        if (input$jitter) p <- p + geom_jitter()
+        if (input$smooth) p <- p + geom_smooth()
+        print(p)
+    }, height=700)
+})
+### end of server.R

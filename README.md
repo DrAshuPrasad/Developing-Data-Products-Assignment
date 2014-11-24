@@ -1,31 +1,24 @@
-Developing-Data-Products-Assignment
-===================================
+---
+title: "Data Exploratory Tool - mtcars"
+author: "Ashutosh Prasad"
+date: "Sunday, November 23, 2014"
+output: html_document
+---
 
-Coursera Course: Developing Data Products
+The Data Exploratory Tool - mtcars is an application deployed on shiny server for anyone to access and use on the internet. For using web-version of the application, click on the following url, and start using the application. On the left side of the page, in the side panel, there are varibales you can choose; on the right side of the page, in the main panel, the inter-relationship of the chosen variables are plotted.
 
-Assignment Submission Files
-- [ui.R](https://github.com/rwstang/Developing-Data-Products-Assignment/blob/master/ui.R)
-- [server.R](https://github.com/rwstang/Developing-Data-Products-Assignment/blob/master/server.R)
-- [README.md](https://github.com/rwstang/Developing-Data-Products-Assignment/blob/master/README.md)
+URL for the web-deployed application: 
+https://dataexploratorytool-mtcars.shinyapps.io/mtcars/
 
-Instructions
+For running the "Data Exploratory Tool - mtcars" locally, do the following:
+    i. Create a working directory on your local disc.
+    ii. Download ui.R and server.R from this github repository in your local directory.
+        You may clone using the following command:
+        git clone https://github.com/DrAshuPrasad/Developing-Data-Products-Assignment.git
+    iii. Invoke RStudio, load library(shiny), and setwd() to the local directory having the code downloaded.
+    iv. In RStudio, invoke command: runAPP(). This will start the application, where you can choose different variables and see their inter-relationships plotted.
+    v. To come out of the application, you may simply close the application window.
 
-1. Clone the code using 'git clone https://github.com/rwstang/Developing-Data-Products-Assignment.git YOURDIRECTORY'
+This application is submitted as an assignment for the course of Data Science run by Johns Hopkins University on the portal of coursera.
 
-2. Load your RStudio
 
-3. Set your working directory to YOURDIRECTORY using setwd("YOURDIRECTORY")
-
-4. Load the Shiny library using library(shiny)
-
-5. Run the application using runApp()
-
-6. You will see the application in a browser. Follow the instructions to use the application.
-
-Dependencies
-
-1. Shiny library
-
-More Information
-
-The application is deployed on ShinyApps.io at [https://raymondwstang.shinyapps.io/assignment/](https://raymondwstang.shinyapps.io/assignment/).
